@@ -1,0 +1,6 @@
+__pycache__ 
+fast-style-transfer/
+models/
+videos/
+images/outputs/*.gif
+images/outputs/*.mp4

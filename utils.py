@@ -16,6 +16,12 @@ def extract_frames(video_path):
         yield frame.to_image()
 
 
+def total_frames(video_path): 
+    """ returns total frames from video """
+    container = av.open(video_path)
+    return container.streams.video[0].frames
+
+
 def gram_matrix(y):
     """ Returns the gram matrix of y (used to compute style loss) """
     (b, c, h, w) = y.size()

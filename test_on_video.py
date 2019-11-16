@@ -27,7 +27,10 @@ if __name__ == "__main__":
     transformer.eval()
 
     stylized_frames = []
-    for frame in tqdm.tqdm(extract_frames(args.video_path), desc="Processing frames"):
+    total_frame = total_frames(args.video_path)
+    print(f'getting {total_frame} frames')
+    pbar = tqdm.tqdm(total = total_frame)
+    for frame in extract_frames(args.video_path):
         # Prepare input frame
         image_tensor = Variable(transform(frame)).to(device).unsqueeze(0)
         # Stylize image
@@ -35,6 +38,10 @@ if __name__ == "__main__":
             stylized_image = transformer(image_tensor)
         # Add to frames
         stylized_frames += [deprocess(stylized_image)]
+
+        # update tqdm 
+        pbar.update(1)
+    pbar.close()
 
     # Create video from frames
     video_name = args.video_path.split("/")[-1].split(".")[0]
