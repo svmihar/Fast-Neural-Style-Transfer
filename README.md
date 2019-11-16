@@ -8,7 +8,8 @@ PyTorch implementation of [Fast Neural Style Transfer](https://cs.stanford.edu/p
 
 I have made some trained models available [here](https://drive.google.com/drive/folders/1aRD6zakhcDImN2Y54qAT6f4801iLcCLB?usp=sharing).
 ## requirements
-- `pip install av`
+be sure that you have installed ffmpeg, and pkg-config correctly.
+- `pip install av skvideo`
 - ubuntu user: 
     - 
     ```
